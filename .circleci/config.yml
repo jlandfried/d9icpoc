@@ -54,7 +54,7 @@ jobs:
           name: Save Composer cache
           key: site-composer-v2-{{ checksum "composer.lock" }}
           paths: [ vendor, web/core, web/modules/contrib, web/themes/contrib ]
-      - run: {name: "Execute build", command: "gulp build" }
+#      - run: {name: "Execute build", command: "gulp build" }
       # Temporary: Don't build Mannequin - see: https://lastcall.atlassian.net/browse/WIT-686?focusedCommentId=59121
       # - run: {name: "Build Mannequin", command: "vendor/bin/mannequin snapshot -o web/mannequin -c .mannequin.pantheon.php"}
       - persist_to_workspace:
