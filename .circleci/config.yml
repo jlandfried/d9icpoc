@@ -121,7 +121,8 @@ jobs:
       - run: {name: 'Push Artifact', command: 'node_modules/.bin/artifactsh -a $GIT_URL -b $CIRCLE_BRANCH'}
       - run: {name: 'Ensure multidev', command: 'test $CIRCLE_BRANCH == "master" || bin/create-artifact-environment-pantheon -b $CIRCLE_BRANCH -s $TERMINUS_ENV'}
       - run: {name: 'Set build secrets', command: 'terminus build:secrets:set $TERMINUS_SITE.$CIRCLE_BRANCH token $GITHUB_TOKEN -vvv'}
-      - run: {name: 'list build secrets', command: 'terminus build:secrets:list $TERMINUS_SITE.$CIRCLE_BRANCH -vvv'}
+      - run: {name: 'Set build secrets', command: 'terminus build:secrets:set d9icpoc.p-lcm-ci2 token 99999 -vvv'}
+      - run: {name: 'list build secrets', command: 'terminus build:secrets:list d9icpoc.p-lcm-ci2 -vvv'}
 #      - run: {name: 'Print Terminus Info', command: 'echo terminus info: "$TERMINUS_SITE.$TERMINUS_ENV"'}
 #      - run: {name: 'Print Github info', command: 'echo token: "$GITHUB_TOKEN"'}
 #      - run: {name: 'Set build secrets', command: 'terminus build:secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN" --file=tokens.json'}
