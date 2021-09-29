@@ -111,7 +111,7 @@ jobs:
       - attach_workspace: {at: /var/www}
       - run: {name: 'Create directory for terminus build tools', command: 'mkdir -p ~/.terminus/plugins'}
       - run: {name: 'Add terminus build tools', command: 'composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0'}
-      - run: {name: 'update terminus', command: 'terminus self-update'}
+      - run: {name: 'update terminus', command: 'terminus self:update'}
       - run: {name: 'Source environment variables', command: 'echo "source /var/www/code/.env/terminus.env" >> $BASH_ENV'}
       - run: {name: 'Terminus Login', command: 'terminus auth:login --machine-token="$TERMINUS_MACHINE_TOKEN"'}
       - run: {name: 'Export git variables', command: 'terminus connection:info --fields=git_host,git_port,git_url --format=json "$TERMINUS_SITE.dev" | bin/json-to-bash >> $BASH_ENV'}
