@@ -1,3 +1,10 @@
 # Put overrides to your pantheon.upstream.yml file here.
 # For more information, see: https://pantheon.io/docs/pantheon-yml/
 api_version: 1
+
+workflows:
+  sync_code:
+    after:
+      - type: webphp
+        description: Push changes back to Git repository if needed
+        script: private/scripts/quicksilver/quicksilver-pushback/push-back.php

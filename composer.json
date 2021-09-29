@@ -14,8 +14,9 @@
         }
     ],
     "require": {
-        "pantheon-upstreams/upstream-configuration": "*",
-        "drush/drush": "^10"
+        "drush/drush": "^10",
+        "pantheon-systems/quicksilver-pushback": "^2",
+        "pantheon-upstreams/upstream-configuration": "*"
     },
     "conflict": {
             "drupal/drupal": "*"
