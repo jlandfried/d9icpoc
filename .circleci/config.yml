@@ -125,10 +125,10 @@ workflows:
     jobs:
       - build
       - test:
-          context: org-global
+#          context: org-global
           requires: [build]
       - deploy:
-          context: org-global
+#          context: org-global
           requires: [build]
           filters:
             branches:
