@@ -36,7 +36,7 @@ defaults: &defaults
     # SITE_BASIC_AUTH
     #
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    TZ: "/usr/share/zoneinfo/America/New_York"
 
     # The variables below usually do not need to be modified.
 
