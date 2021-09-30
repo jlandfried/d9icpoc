@@ -129,17 +129,16 @@ jobs:
 workflows:
   build_test_release:
     jobs:
-      - build:
-          pre-steps:
-            - run: {name: "Update Apt", command: "apt-get update"}
-            - run: {name: "Install Rsync", command: "apt-get install rsync -y"}
-            - run: {name: 'Create directory for terminus build tools', command: 'mkdir -p ~/.terminus/plugins'}
-            - run: {name: 'Add terminus build tools', command: 'composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0'}
-
+      build
 #      - test:
 ##          context: org-global
 #          requires: [build]
       - deploy:
+          pre-steps:
+            - run: { name: "Update Apt", command: "apt-get update" }
+            - run: { name: "Install Rsync", command: "apt-get install rsync -y" }
+            - run: { name: 'Create directory for terminus build tools', command: 'mkdir -p ~/.terminus/plugins' }
+            - run: { name: 'Add terminus build tools', command: 'composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0' }
 #          context: org-global
           requires: [build]
           filters:
