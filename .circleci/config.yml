@@ -109,6 +109,10 @@ jobs:
     executor: php
     steps:
       - attach_workspace: {at: /var/www}
+      - run: { name: "Update Apt", command: "apt-get update" }
+      - run: { name: "Install Rsync", command: "apt-get install rsync -y" }
+      - run: { name: 'Create directory for terminus build tools', command: 'mkdir -p ~/.terminus/plugins' }
+      - run: { name: 'Add terminus build tools', command: 'composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0' }
       - run: {name: 'update terminus', command: 'terminus self:update'}
       - run: {name: 'Source environment variables', command: 'echo "source /var/www/code/.env/terminus.env" >> $BASH_ENV'}
       - run: {name: 'Terminus Login', command: 'terminus auth:login --machine-token="$TERMINUS_MACHINE_TOKEN"'}
@@ -134,11 +138,6 @@ workflows:
 ##          context: org-global
 #          requires: [build]
       - deploy:
-          pre-steps:
-            - run: { name: "Update Apt", command: "apt-get update" }
-            - run: { name: "Install Rsync", command: "apt-get install rsync -y" }
-            - run: { name: 'Create directory for terminus build tools', command: 'mkdir -p ~/.terminus/plugins' }
-            - run: { name: 'Add terminus build tools', command: 'composer create-project --no-dev -d ~/.terminus/plugins pantheon-systems/terminus-build-tools-plugin:^2.0.0' }
 #          context: org-global
           requires: [build]
           filters:
