@@ -109,9 +109,11 @@ function push_back($fullRepository, $workDir, $upstreamRepoWithCredentials, $bui
 
     // The last commit made on the lean repo prior to creating the build artifacts
     $fromSha = $buildMetadata['sha'];
+    pantheon_raise_dashboard_error('buildmetadata_shaw: ' . $buildMetadata['sha']);
 
     // The name of the PR branch
     $branch = $buildMetadata['ref'];
+    pantheon_raise_dashboard_error('buildmetadata_ref: ' . $buildMetadata['ref']);
     // When working from HEAD, use branch master.
     if ($branch == 'HEAD') {
         $branch = 'master';
@@ -119,11 +121,13 @@ function push_back($fullRepository, $workDir, $upstreamRepoWithCredentials, $bui
 
     // The commit to cherry-pick
     $commitToSubmit = exec("git -C $fullRepository rev-parse HEAD");
+    pantheon_raise_dashboard_error('commitToSubmit: ' . "git -C $fullRepository rev-parse HEAD");
 
     // Seatbelts: is build metadatafile modified in the HEAD commit?
     $commitWithBuildMetadataFile = exec("git -C $fullRepository log -n 1 --pretty=format:%H -- $buildMetadataFile");
     if ($commitWithBuildMetadataFile == $commitToSubmit) {
         print "Ignoring commit because it contains build assets.\n";
+        pantheon_raise_dashboard_error("Ignoring commit because it contains build assets.");
         return;
     }
 
