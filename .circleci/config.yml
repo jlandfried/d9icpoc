@@ -129,13 +129,12 @@ jobs:
 #      - run: {name: 'Prune multidev environments', command: 'bin/prune-artifact-environments-pantheon -p "p-*"'}
 #      - run: {name: 'Prune branches', command: 'bin/prune-artifact-branches -a $GIT_URL -p "p-*"'}
 workflows:
-  version: 2
   build_test_release:
     jobs:
       - build
         pre-steps:
-          - run: { name: "Update Apt", command: "apt-get update" }
-          - run: { name: "Install rsync", command: "apt-get install rsync -y" }
+          - run:
+            command: apt-get update
 #      - test:
 ##          context: org-global
 #          requires: [build]
