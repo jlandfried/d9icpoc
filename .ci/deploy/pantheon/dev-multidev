@@ -37,7 +37,7 @@ fi
 #terminus -n env:clear-cache $TERMINUS_SITE.$TERMINUS_ENV
 
 # Ensure secrets are set
-terminus -n secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN"
+terminus -n build:secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN"
 
 # Delete old multidev environments associated
 # with a PR that has been merged or closed.
