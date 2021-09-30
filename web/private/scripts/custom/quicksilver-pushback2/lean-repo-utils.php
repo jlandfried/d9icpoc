@@ -60,7 +60,7 @@ function pantheon_raise_dashboard_error($reason = 'Uknown failure', $extended = 
   if ($extended) {
     error_log(print_r($extended, 1));
   }
-  die("Quicksilver Pushback Integration failed - $reason");
+//  die("Quicksilver Pushback Integration failed - $reason");
 }
 
 /**
