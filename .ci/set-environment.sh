@@ -134,9 +134,9 @@ echo
 mkdir -p $HOME/.ssh && echo "StrictHostKeyChecking no" >> "$HOME/.ssh/config"
 
 # Configure the GitHub Oauth token if it is available
-if [ -n "$GITHUB_TOKEN" ]; then
+#if [ -n "$GITHUB_TOKEN" ]; then
 #  composer -n config --global github-oauth.github.com $GITHUB_TOKEN
-fi
+#fi
 
 # Set up our default git config settings if git is available.
 git config --global user.email "${GIT_EMAIL:-no-reply+ci-$CI_BUILD_NUMBER@getpantheon.com}"
