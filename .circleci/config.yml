@@ -109,7 +109,7 @@ jobs:
     executor: php
     steps:
       - attach_workspace: {at: /var/www}
-      - run: {name: 'Set environment variables', command: 'sh /var/www/code/.ci/set-environment.sh'}
+      - run: {name: 'Set environment variables', command: './code/.ci/set-environment.sh'}
       - run: {name: 'update terminus', command: 'terminus self:update'}
       - run: {name: 'Source environment variables', command: 'echo "source /var/www/code/.env/terminus.env" >> $BASH_ENV'}
       - run: {name: 'Terminus Login', command: 'terminus auth:login --machine-token="$TERMINUS_MACHINE_TOKEN"'}
