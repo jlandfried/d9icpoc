@@ -117,7 +117,7 @@ jobs:
       - run: {name: 'Trust host key', command: 'ssh-keyscan -p $GIT_PORT $GIT_HOST >> /etc/ssh/ssh_known_hosts'}
       - run: {name: 'Set git committer', command: 'git config --global user.email "$GIT_AUTHOR_EMAIL" && git config --global user.name "$GIT_AUTHOR_NAME"'}
       - run: {name: 'Lean Composer install', command: 'composer install --no-dev -o -n'}
-      - run: {name: 'Deploy to Pantheon', command: 'sh /var/www/code/.ci/deploy/pantheon/dev-multidev'}
+      - run: {name: 'Deploy to Pantheon', command: './.ci/deploy/pantheon/dev-multidev'}
 #      - run: {name: 'Push Artifact', command: 'node_modules/.bin/artifactsh -a $GIT_URL -b $CIRCLE_BRANCH'}
 #      - run: {name: 'Ensure multidev', command: 'test $CIRCLE_BRANCH == "master" || bin/create-artifact-environment-pantheon -b $CIRCLE_BRANCH -s $TERMINUS_ENV'}
 #      - run: {name: 'Set build secrets', command: 'terminus build:secrets:set $TERMINUS_SITE.$CIRCLE_BRANCH token $GITHUB_TOKEN'}
