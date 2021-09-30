@@ -23,18 +23,18 @@ else
 fi
 
 # Update the Drupal database
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
+#terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- updatedb -y
 
 # If exported configuration is available, then import it.
-if [ -f "config/system.site.yml" ] ; then
-  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
-fi
+#if [ -f "config/system.site.yml" ] ; then
+#  terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- config-import --yes
+#fi
 
 # Clear Drupal cache
-terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cr
+#terminus -n drush "$TERMINUS_SITE.$TERMINUS_ENV" -- cr
 
 # Clear the environment cache
-terminus -n env:clear-cache $TERMINUS_SITE.$TERMINUS_ENV
+#terminus -n env:clear-cache $TERMINUS_SITE.$TERMINUS_ENV
 
 # Ensure secrets are set
 terminus -n secrets:set "$TERMINUS_SITE.$TERMINUS_ENV" token "$GITHUB_TOKEN"
